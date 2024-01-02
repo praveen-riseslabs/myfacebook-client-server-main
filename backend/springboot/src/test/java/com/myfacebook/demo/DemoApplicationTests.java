@@ -1,10 +1,10 @@
-package com.myfacebook.registration;
+package com.myfacebook.demo;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RegistrationApplicationTests {
+class DemoApplicationTests {
 
 	@Test
 	void contextLoads() {
