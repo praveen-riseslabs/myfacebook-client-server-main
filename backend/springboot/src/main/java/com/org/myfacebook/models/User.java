@@ -9,6 +9,7 @@ import jakarta.persistence.Table;
 @Table(name = "users")
 public class User {
      
+  
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id", nullable = false, unique = true, length = 45)
@@ -28,6 +29,11 @@ public class User {
      
     @Column(name = "lastname", nullable = false, length = 20)
     private String lastname;
+
+    public User(String email) {
+        this.email = email;
+      //  this.password = password;
+    }
 
     public Integer getId() {  
         return id;  
@@ -70,4 +76,5 @@ public class User {
     public void setLastname(String lastname) {  
         this.lastname = lastname;  
     }
+    
 }

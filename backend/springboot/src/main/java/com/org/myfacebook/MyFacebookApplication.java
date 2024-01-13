@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import com.org.myfacebook.models.*;
 import com.org.myfacebook.repository.UserRepository;
+import com.org.myfacebook.controller.AuthController;
 
 @SpringBootApplication
 @RestController
@@ -18,11 +19,13 @@ public class MyFacebookApplication {
     }
     @Autowired
     private UserRepository userRepo;
-    
-    @GetMapping("/hello")
-    public String hello() {
-      return "hello world!";
-    }
+  
+    // @PostMapping("/login")
+    // public User createuser(@RequestBody User user) {
+    //    return userRepo.save(user);
+    // }
+
+
     @PostMapping("/createuser")
     public User createuser(@RequestBody User user) {
        return userRepo.save(user);
