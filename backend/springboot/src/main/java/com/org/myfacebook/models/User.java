@@ -30,9 +30,9 @@ public class User {
     @Column(name = "lastname", nullable = false, length = 20)
     private String lastname;
 
-    public User(String email) {
+    public User(String email, String password) {
         this.email = email;
-      //  this.password = password;
+        this.password = password;
     }
 
     public Integer getId() {  
@@ -76,5 +76,6 @@ public class User {
     public void setLastname(String lastname) {  
         this.lastname = lastname;  
     }
+
     
 }

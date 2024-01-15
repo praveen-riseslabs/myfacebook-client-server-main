@@ -1,10 +1,10 @@
-package com.riseslabs.myfacebook;
+package com.riseslabs.registration;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class MyfacebookApplicationTests {
+class RegistrationPageBackendApplicationTests {
 
 	@Test
 	void contextLoads() {

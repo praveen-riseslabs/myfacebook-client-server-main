@@ -6,7 +6,7 @@ function Login() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const registerUser = () => {
-    axios.post('http://localhost:8080/login', {
+    axios.post('http://localhost:8080/authenticate', {
       email,
       password  
     })
