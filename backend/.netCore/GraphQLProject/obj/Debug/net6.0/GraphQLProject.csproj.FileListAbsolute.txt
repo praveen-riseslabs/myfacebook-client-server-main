@@ -1,0 +1,7 @@
+C:\Users\praveen.rondi\source\repos\GraphQLProject\GraphQLProject\obj\Debug\net6.0\GraphQLProject.csproj.AssemblyReference.cache
+C:\Users\praveen.rondi\source\repos\GraphQLProject\GraphQLProject\obj\Debug\net6.0\GraphQLProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\praveen.rondi\source\repos\GraphQLProject\GraphQLProject\obj\Debug\net6.0\GraphQLProject.AssemblyInfoInputs.cache
+C:\Users\praveen.rondi\source\repos\GraphQLProject\GraphQLProject\obj\Debug\net6.0\GraphQLProject.AssemblyInfo.cs
+C:\Users\praveen.rondi\source\repos\GraphQLProject\GraphQLProject\obj\Debug\net6.0\GraphQLProject.csproj.CoreCompileInputs.cache
+C:\Users\praveen.rondi\source\repos\GraphQLProject\GraphQLProject\obj\Debug\net6.0\GraphQLProject.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\praveen.rondi\source\repos\GraphQLProject\GraphQLProject\obj\Debug\net6.0\GraphQLProject.MvcApplicationPartsAssemblyInfo.cache
