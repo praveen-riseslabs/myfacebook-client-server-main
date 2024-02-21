@@ -1,6 +1,6 @@
-const User = require("../models/user.model.js");
+import User from "../models/user.model.js";
 // Retrieve and return all users from the database.
-exports.findAll = (req, res) => {
+export const findAll = (req, res) => {
   User.find()
     .then(users => {
       res.send(users);
@@ -13,7 +13,7 @@ exports.findAll = (req, res) => {
     });
 };
 // Create and Save a new User
-exports.create = (req, res) => {
+export const create = (req, res) => {
   // Validate request
   if (!req.body) {
     return res.status(400).send({
@@ -41,7 +41,7 @@ exports.create = (req, res) => {
     });
 };
 // Find a single User with a id
-exports.findOne = (req, res) => {
+export const findOne = (req, res) => {
   User.findById(req.params.id)
     .then(user => {
       if (!user) {
@@ -63,7 +63,7 @@ exports.findOne = (req, res) => {
     });
 };
 // Update a User identified by the id in the request
-exports.update = (req, res) => {
+export const update = (req, res) => {
   // Validate Request
   if (!req.body) {
     return res.status(400).send({
@@ -102,7 +102,7 @@ exports.update = (req, res) => {
     });
 };
 // Delete a User with the specified id in the request
-exports.delete = (req, res) => {
+export const deleteUser = (req, res) => {
   User.findByIdAndRemove(req.params.id)
     .then(user => {
       if (!user) {

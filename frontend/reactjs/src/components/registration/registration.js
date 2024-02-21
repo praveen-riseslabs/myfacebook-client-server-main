@@ -1,12 +1,15 @@
 import React, {useState} from "react";
 import "./registration.scss";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
 function Registration() {
   const [firstname, setFirstname] = useState('');
   const [lastname, setLastname] = useState('');
   const [email, setEmail] = useState('');
   const [phonenumber, setPhonenumber] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
   const registerUser = () => {
     axios.post('http://localhost:8080/createuser', {
       firstname,
@@ -22,11 +25,14 @@ function Registration() {
       console.log(error);
     });
   }
+  function handleClick() {
+    navigate("/login");
+  }
   return (
     <div className="registration-main">
       <div className="container align-middle">
         <div className="row justify-content-md-center">
-          <div className="col col-md-5 col-lg-5">
+          <div className="col col-md-4 col-lg-4">
             <div className="bg-color">
               <div className="">
                 <h5>Registration</h5>
@@ -82,14 +88,22 @@ function Registration() {
                     onChange={(e)=> setPassword(e.target.value)}
                   />
                 </div>
-                <div className="form-group">
-                  <button
+                <div className="row">
+                  <div className="col col-md-6"><button
+                    type="button"
+                    className="btn btn-secondary btn-md btn-block"
+                    onClick={()=> handleClick()}
+                  >
+                    Cancel
+                  </button></div>
+                  <div className="col col-md-6"><button
                     type="button"
                     className="btn btn-primary btn-md btn-block"
                     onClick={() => registerUser()}
                   >
                     Submit
-                  </button>
+                  </button></div>
+                  
                 </div>
               </div>
             </div>

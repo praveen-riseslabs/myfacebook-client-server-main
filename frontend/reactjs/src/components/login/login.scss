@@ -1,10 +1,15 @@
-.registration-main {
+.login-main {
+    .justify-content-md-center {
+        align-items:  center;
+        height: 75vh;
+      }
 padding:  20px;  
   
     .bg-color {
         background-color: #191C24;
         padding: 15px;
         border-radius: 10px;
+        padding-bottom: 35px;
     }
     .content-center {
         align-content: center;
@@ -20,5 +25,17 @@ padding:  20px;
         width: 100%;
         margin-top: 15px;
         margin-bottom: 15px;
+    }
+    .sign-up {
+        float: left;
+        color: #3907ef;
+        padding-bottom: 20px;
+        cursor: pointer;
+    }
+    .forgot-password {
+        float: right;
+        color: #3907ef;
+        padding-bottom: 20px;
+        cursor: pointer;
     }
 }

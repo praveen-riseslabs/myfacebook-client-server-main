@@ -1,20 +1,28 @@
-const express = require("express");
-const bodyParser = require("body-parser");
+import express from "express";
+//const express = require("express");
+import bodyParser from "body-parser";
+//const dbConfig = require("./config/db.config.js");
+import DB from "./config/db.config.js";
+import mongoose from "mongoose";
+import userRoutes from "./routes/user.routes.js";
+import loginRouter from "./routes/login.router.js";
+//const mongoose = require("mongoose");
+
+//const bodyParser = require("body-parser");
 // create express app
-const app = express();
+const app = express(); 
 // Setup server port
+
 const port = process.env.PORT || 4000;
 // parse requests of content-type - application/x-www-form-urlencoded
 app.use(bodyParser.urlencoded({ extended: true }));
 // parse requests of content-type - application/json
 app.use(bodyParser.json());
 // Configuring the database
-const dbConfig = require("./config/db.config.js");
-const mongoose = require("mongoose");
+
 mongoose.Promise = global.Promise;
 // Connecting to the database
-mongoose
-  .connect(dbConfig.url, {
+mongoose.connect(DB.url, {
     useNewUrlParser: true
   })
   .then(() => {
@@ -25,13 +33,16 @@ mongoose
     process.exit();
   });
 // Require Users routes
-const userRoutes = require("./routes/user.routes");
+//const userRoutes = require("./routes/user.routes");
+//const loginRoutes = require("./routes/login.routes");
 // using as middleware
-app.use("/api/users", userRoutes);
+ app.use("/api/v1", userRoutes);
+ app.use("/api/v1/user", loginRouter);
+
 // define a root/default route
-app.get("/", (req, res) => {
-  res.json({ message: "Hello World" });
-});
+// app.get("/", (req, res) => {
+//   res.json({ message: "Hello World" });
+// });
 // listen for requests
 app.listen(port, () => {
   console.log(`Node server is listening on port ${port}`);
