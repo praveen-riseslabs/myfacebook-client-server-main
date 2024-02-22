@@ -22,8 +22,8 @@ export const create = (req, res) => {
   }
   // Create a new User
   const user = new User({
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
     email: req.body.email,
     phone: req.body.phone,
     password: req.body.password
@@ -74,10 +74,10 @@ export const update = (req, res) => {
   User.findByIdAndUpdate(
     req.params.id,
     {
-      first_name: req.body.first_name,
-      last_name: req.body.last_name,
-      email: req.body.last_name,
-      phone: req.body.last_name,
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
+      email: req.body.email,
+      phone: req.body.phone,
       password: req.body.password
     },
     { new: true }

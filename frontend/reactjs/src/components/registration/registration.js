@@ -11,7 +11,7 @@ function Registration() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const registerUser = () => {
-    axios.post('http://localhost:8080/createuser', {
+    axios.post('http://localhost:4000/api/v1/create', {
       firstname,
       lastname,
       email,
@@ -19,10 +19,16 @@ function Registration() {
       password  
     })
     .then(function (response) {
-      console.log(response);
+      if(response.status == 200) {
+        alert("user created successfully")
+        navigate("/login");
+      } else {
+       alert("Fail to create user");
+      }
+      
     })
     .catch(function (error) {
-      console.log(error);
+      alert("Fail to create user");
     });
   }
   function handleClick() {
@@ -81,7 +87,7 @@ function Registration() {
                 <div className="form-group">
                   <label htmlFor="password-id">Password</label>
                   <input
-                    type="text"
+                    type="password"
                     className="form-control"
                     id="password-id"
                     placeholder="Password"

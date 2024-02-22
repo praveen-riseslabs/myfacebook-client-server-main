@@ -16,8 +16,8 @@ export const ValidateUser = (req, res) => {
        console.log("jwt", jwt);
        const userDetails = {}
        userDetails["token"] = jwt;
-       userDetails["first_name"] =  users[0].first_name;
-       userDetails["last_name"] =  users[0].last_name;
+       userDetails["firstname"] =  users[0].firstname;
+       userDetails["lastname"] =  users[0].lastname;
        userDetails["phone"] =  users[0].phone;
        userDetails["email"] =  users[0].email;
        //delete users[0].password;  
@@ -46,8 +46,8 @@ const create = (req, res) => {
   }
   // Create a new User
   const user = new User({
-    first_name: req.body.first_name,
-    last_name: req.body.last_name,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname,
     email: req.body.email,
     phone: req.body.phone,
     password: req.body.password

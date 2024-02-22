@@ -1,11 +1,16 @@
 import mongoose from 'mongoose';
 
 const UserSchema = mongoose.Schema({
-    first_name: String,
-    last_name: String,
+    firstname: String,
+    lastname: String,
     email: String,
     phone: String,
     password: String,
+    otp: {
+        type:Number,
+        expires:'10s',
+        index:true
+    },
     is_active:  { type: Boolean, default: false },
     is_verified:  { type: Boolean, default: false },
     is_deleted:  { type: Boolean, default: false }

@@ -2,20 +2,34 @@ import React, {useState} from "react";
 import "./resetpassword.scss";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function ResetPassword() {
   const [confirmPassword, setConfirmPassword] = useState('');
   const [password, setPassword] = useState('');
+  const [otp, setOtp] = useState('');
+  const navigate = useNavigate();
+ 
   const registerUser = () => {
-    axios.post('http://localhost:4000/authenticate', {
-      confirmPassword,
+    if(confirmPassword !== password) {
+      alert("password and confirm didn't match");
+      return false;
+    }
+    axios.post('http://localhost:4000/api/v1/reset/password', {
+      otp,
       password  
     })
     .then(function (response) {
-      console.log(response);
+      if(response.status == 200) {
+        alert("Successfully reset the password!");
+        navigate('/login')
+      } else {
+        alert("unable to reset the password");
+      }
+      //console.log(response);
     })
     .catch(function (error) {
-      console.log(error);
+      alert("unable to reset the password");
     });
   }
   return (
@@ -27,6 +41,17 @@ function ResetPassword() {
               <div className="">
                 <h5>Reset your password</h5>
               </div>
+              <div className="content-center">
+                <div className="form-group">
+                  <label htmlFor="Otp-id">OTP</label>
+                  <input
+                    type="text"
+                    className="form-control"
+                    id="Otp-id"
+                    placeholder="OTP"
+                    onChange={(e) => setOtp(e.target.value)}
+                  />
+                </div>
               <div className="content-center">
                 <div className="form-group">
                   <label htmlFor="email-id">Password</label>
@@ -62,7 +87,7 @@ function ResetPassword() {
           </div>
         </div>
       </div>
-      <div />
+      </div>
     </div>
   );
 }

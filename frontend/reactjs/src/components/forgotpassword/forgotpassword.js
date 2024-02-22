@@ -9,15 +9,19 @@ function Forgotpassword() {
   const navigate = useNavigate();
   const registerUser = () => {
     axios
-      .post("http://localhost:8080/authenticate", {
-        email,
-        password
+      .post("http://localhost:4000/api/v1/forgot/password", {
+        email
       })
       .then(function(response) {
-        console.log(response);
+        if(response.status == 200) {
+          alert("OTP Sent your email address");
+          navigate('/resetpassword')
+        } else {
+          alert("We are unable to send OTP this time or registed email id not found in our system.");
+        }
       })
       .catch(function(error) {
-        console.log(error);
+        alert("We are unable to send OTP this time or registed email id not found in our system.");
       });
   };
   return (
