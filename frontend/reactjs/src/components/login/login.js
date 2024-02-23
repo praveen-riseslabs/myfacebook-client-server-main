@@ -2,21 +2,27 @@ import React, { useState } from "react";
 import "./login.scss";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
   const registerUser = () => {
     axios
-      .post("http://localhost:8080/authenticate", {
+      .post("http://localhost:4000/api/v1/user/login", {
         email,
         password
       })
       .then(function(response) {
-        console.log(response);
+        if(response.status == 200) {
+          navigate("/addemployee");
+        } else {
+          alert("Unable to login this time, please try again later");
+        }
       })
       .catch(function(error) {
-        console.log(error);
+        alert("Unable to login this time, please try again later");
       });
   };
   return (

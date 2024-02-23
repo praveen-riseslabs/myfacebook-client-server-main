@@ -6,6 +6,7 @@ import Registration from './components/registration/registration';
 import Login from './components/login/login';
 import Forgotpassword from './components/forgotpassword/forgotpassword';
 import ResetPassword from './components/resetpassword/resetpassword';
+import AddEmployeeRecords from './components/addempoyee/addemployee';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 
@@ -18,6 +19,7 @@ export default function App() {
           <Route path="/registration" element={<Registration />} />
           <Route path="/forgotpassword" element={<Forgotpassword />}/>
           <Route path="/resetpassword" element={<ResetPassword />}/>
+          <Route path="/addemployee" element={<AddEmployeeRecords />}/>
           <Route path="*" element={<Login />} />
         </Route>
       </Routes>
