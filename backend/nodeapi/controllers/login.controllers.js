@@ -8,12 +8,12 @@ function generateAccessToken(user) {
   return jwt.sign(user, secret, options);
 }
 export const ValidateUser = (req, res) => {
-  console.log(req.body);
   User.find(req.body)
     .then(users => {
       if(users.length) {
        const jwt = generateAccessToken(req.body);
        console.log("jwt", jwt);
+     //  User.update(req.body, {"jwt": jwt});
        const userDetails = {}
        userDetails["token"] = jwt;
        userDetails["firstname"] =  users[0].firstname;

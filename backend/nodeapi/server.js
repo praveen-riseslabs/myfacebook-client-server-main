@@ -8,6 +8,7 @@ import userRoutes from "./routes/user.routes.js";
 import loginRouter from "./routes/login.router.js";
 import forgotRouter from "./routes/forgot.router.js";
 import resetRouter from "./routes/reset.router.js";
+import employeeRouter from "./routes/employee.route.js";
 //const mongoose = require("mongoose");
 
 //const bodyParser = require("body-parser");
@@ -42,6 +43,7 @@ mongoose.connect(DB.url, {
  app.use("/api/v1/user", loginRouter);
  app.use("/api/v1/forgot", forgotRouter);
  app.use("/api/v1/reset", resetRouter);
+ app.use("/api/v1/emp", employeeRouter);
 
 // define a root/default route
 // app.get("/", (req, res) => {

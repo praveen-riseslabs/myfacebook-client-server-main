@@ -1,36 +1,39 @@
 import Employee from "../models/employee.model.js";
+import {authenticateToken} from "../controllers/token.controller.js"
 // Retrieve and return all Employees from the database.
-export const findAll = (req, res) => {
+export const getEmployeeDetails = (req, res) => {
+  authenticateToken(req, res);
   Employee.find()
-    .then(Employees => {
-      res.send(Employees);
+    .then(employees => {
+      res.send(employees);
     })
     .catch(err => {
       res.status(500).send({
         message:
-          err.message || "Something went wrong while getting list of Employees."
+          err.message || "Something went wrong while getting list of employees."
       });
     });
 };
 // Create and Save a new Employee
-export const addEmployeeRecord = (req, res) => {
+export const addEmpDetails = (req, res) => {
   // Validate request
+  authenticateToken(req, res);
   if (!req.body) {
     return res.status(400).send({
       message: "Please fill all required field"
-    });
+    });    
   }
-  const Employee = new Employee({
+  const employee = new Employee({
     empId: req.body.empId,
     firstname: req.body.firstname,
     lastname: req.body.lastname,
     phone: req.body.phone,
     designation: req.body.designation,
-    phone: req.body.phone,
-    primaryskill: req.body.primaryskill
+    email: req.body.email,
+    primaryskill: req.body.skillset
   });
   // Save Employee in the database
-  Employee.save().then(data => {
+  employee.save().then(data => {
       res.send(data);
     }).catch(err => {
       res.status(500).send({

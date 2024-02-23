@@ -4,6 +4,13 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
 function AddEmployeeRecords() {
+  const [email, setEmail] = useState("");
+  const [empId, setEmpId] = useState("");
+  const [firstname, setFirstname] = useState("");
+  const [lastname, setLastname] = useState("");
+  const [designation, setDesignation] = useState("");
+  const [skillset, setSkillset] = useState("");
+  const [phone, setPhone] = useState("");
   const navigate = useNavigate();
   useEffect(() => {
     // axios
@@ -28,7 +35,41 @@ function AddEmployeeRecords() {
   }, []);
 
   const AddEmployee = () => {
-      
+    if(!email.length &&
+      !phone.length &&
+      !firstname.length &&
+      !lastname.length &&
+      !designation.length &&
+      !skillset.length &&
+      !empId.length) {
+         alert("alert fields are mandatory");
+         return false;
+      }
+    const token = JSON.parse(localStorage.getItem('userinfo')).data.token
+    axios.defaults.headers.common = {
+        'Authorization': 'Bearer ' + token
+    };
+    axios
+    .post("http://localhost:4000/api/v1/emp/addEmpDetails", {
+      email,
+      phone,
+      firstname,
+      lastname,
+      designation,
+      skillset,
+      empId
+    })
+    .then(function(response) {
+      if(response.status == 200) {
+        localStorage.setItem('userinfo', JSON.stringify(response))
+        navigate("/addemployee");
+      } else {
+        alert("Unable to login this time, please try again later");
+      }
+    })
+    .catch(function(error) {
+      alert("Unable to login this time, please try again later");
+    });
   }
 
   return (
@@ -44,6 +85,7 @@ function AddEmployeeRecords() {
                   className="form-control"
                   id="empid"
                   placeholder="Enter emp Id"
+                  onChange={e => setEmpId(e.target.value)}
                 />
               </div>
             </div>
@@ -55,6 +97,7 @@ function AddEmployeeRecords() {
                   className="form-control"
                   id="firstname"
                   placeholder="Enter First Name"
+                  onChange={e => setFirstname(e.target.value)}
                 />
               </div>
             </div>
@@ -66,6 +109,7 @@ function AddEmployeeRecords() {
                   className="form-control"
                   id="lastname"
                   placeholder="Enter Last Name"
+                  onChange={e => setLastname(e.target.value)}
                 />
               </div>
             </div>
@@ -77,6 +121,7 @@ function AddEmployeeRecords() {
                   className="form-control"
                   id="email"
                   placeholder="Enter Email"
+                  onChange={e => setEmail(e.target.value)}
                 />
               </div>
             </div>
@@ -88,6 +133,7 @@ function AddEmployeeRecords() {
                   className="form-control"
                   id="phone"
                   placeholder="Enter Phone Number"
+                  onChange={e => setPhone(e.target.value)}
                 />
               </div>
             </div>
@@ -99,6 +145,7 @@ function AddEmployeeRecords() {
                   className="form-control"
                   id="designatrion"
                   placeholder="Enter Designation"
+                  onChange={e => setDesignation(e.target.value)}
                 />
               </div>
             </div>
@@ -110,10 +157,16 @@ function AddEmployeeRecords() {
                   className="form-control"
                   id="primaryskills"
                   placeholder="Enter primary skill"
+                  onChange={e => setSkillset(e.target.value)}
                 />
               </div>
             </div>
             <div className="row">
+              <div className="col-md-6">
+                <div className="form-group">
+                    <button className="btn btn-secondary" onClick={()=>navigate("/showempdetails")}>Show Details</button>
+                </div>
+              </div>
               <div className="col-md-6">
                 <div className="form-group">
                     <button className="btn btn-primary" onClick={()=>AddEmployee()}>Submit</button>

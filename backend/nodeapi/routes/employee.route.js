@@ -1,7 +1,7 @@
 import express from 'express';
-import {genrateRandomToken} from '../controllers/employee.controllers.js'
-const forgotRouter = express.Router()
-forgotRouter.post('/employee', genrateRandomToken);
-forgotRouter.post('/employee', genrateRandomToken);
+import {getEmployeeDetails, addEmpDetails} from '../controllers/employee.controllers.js'
+const employeeRouter = express.Router()
+employeeRouter.get('/getEmployeeDetails', getEmployeeDetails);
+employeeRouter.post('/addEmpDetails', addEmpDetails);
 
-export default forgotRouter;
+export default employeeRouter;

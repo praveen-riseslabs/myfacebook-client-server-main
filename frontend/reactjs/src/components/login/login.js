@@ -16,7 +16,8 @@ function Login() {
       })
       .then(function(response) {
         if(response.status == 200) {
-          navigate("/addemployee");
+          localStorage.setItem('userinfo', JSON.stringify(response))
+          navigate("/showempdetails");
         } else {
           alert("Unable to login this time, please try again later");
         }

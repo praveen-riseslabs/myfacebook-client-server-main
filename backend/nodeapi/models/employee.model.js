@@ -15,5 +15,5 @@ const EmployeeSchema = mongoose.Schema({
     timestamps: true
 });
 
-export default mongoose.model('employee', EmployeeSchema);
+export default mongoose.model('employees', EmployeeSchema);
 //export default DB;
